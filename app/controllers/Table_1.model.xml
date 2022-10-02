@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Table_1" alias="Table_1" created="2022-09-30T13:31:43" modified="2022-09-30T13:39:09" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column name="Id" fieldName="Id" label="Id" />
+    <column name="LongUrl" fieldName="LongUrl" label="Long Url" />
+    <column name="Title" fieldName="Title" label="Title" />
+    <column name="Hash" fieldName="Hash" label="Hash" />
+    <column name="ShortUrl" fieldName="ShortUrl" label="Short Url" />
+    <column name="CreateDate" fieldName="CreateDate" label="Create Date" format="g" />
+    <column name="UpdateDate" fieldName="UpdateDate" label="Update Date" format="g" />
+  </columns>
+</dataModel>

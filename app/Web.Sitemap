@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode title="^SiteHome^Home^SiteHome^" description="" url="~/index.html">
+    <siteMapNode title="^HomePath^Home^HomePath^" description="^HomeDesc^Application home page^HomeDesc^" url="~/pages/home" cssClass="Wide" />
+    <siteMapNode title="Table 1" description="View Table 1" url="~/pages/table_1" />
+    <siteMapNode title="Table 2" description="View Table 2" url="~/pages/table_2" />
+    <siteMapNode title="Table 3" description="View Table 3" url="~/pages/table_3" />
+  </siteMapNode>
+</siteMap>

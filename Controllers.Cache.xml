@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataControllerCollection xmlns="urn:schemas-codeontime-com:data-aquarium" snapshot="true">
+  <dataController name="Table_1" conflictDetection="overwriteChanges" label="Table 1" nativeSchema="dbo" nativeTableName="Table_1">
+    <commands>
+      <command id="command1" type="Text">
+        <text><![CDATA[
+select
+	"Table_1"."Id" "Id"
+	,"Table_1"."LongUrl" "LongUrl"
+	,"Table_1"."Title" "Title"
+	,"Table_1"."Hash" "Hash"
+	,"Table_1"."ShortUrl" "ShortUrl"
+	,"Table_1"."CreateDate" "CreateDate"
+	,"Table_1"."UpdateDate" "UpdateDate"
+from "dbo"."Table_1" "Table_1"
+]]></text>
+      </command>
+      <command id="IdIdentityCommand" type="Text" event="Inserted">
+        <text><![CDATA[select @@identity]]></text>
+        <output>
+          <fieldOutput fieldName="Id" />
+        </output>
+      </command>
+    </commands>
+    <fields>
+      <field name="Id" type="Int32" allowNulls="false" isPrimaryKey="true" label="Id" readOnly="true" />
+      <field name="LongUrl" type="String" label="Long Url" length="500" showInSummary="true" allowNulls="false" causesCalculate="true" />
+      <field name="Title" type="String" label="Title" length="50" showInSummary="true" allowNulls="false" />
+      <field name="Hash" type="String" label="Hash" length="50" showInSummary="true" />
+      <field name="ShortUrl" type="String" label="Short Url" length="50" showInSummary="true" />
+      <field name="CreateDate" type="DateTime" dataFormatString="dd/MM/yyyy HH:mm:ss" label="Create Date" showInSummary="true" />
+      <field name="UpdateDate" type="DateTime" dataFormatString="dd/MM/yyyy HH:mm:ss" label="Update Date" />
+    </fields>
+    <views>
+      <view id="grid1" type="Grid" commandId="command1" label="Table 1">
+        <headerText>$DefaultGridViewDescription</headerText>
+        <dataFields>
+          <dataField fieldName="LongUrl" hyperlinkFormatString="{LongUrl}">
+          </dataField>
+          <dataField fieldName="Title" columns="50" />
+          <dataField fieldName="Hash" columns="50" textMode="Static">
+          </dataField>
+          <dataField fieldName="ShortUrl" columns="50" textMode="Static" hyperlinkFormatString="{ShortUrl}">
+          </dataField>
+          <dataField fieldName="CreateDate" columns="20" textMode="Static">
+          </dataField>
+          <dataField fieldName="UpdateDate" columns="20" textMode="Static">
+          </dataField>
+        </dataFields>
+      </view>
+      <view id="editForm1" type="Form" commandId="command1" label="Review Table 1">
+        <headerText>$DefaultEditViewDescription</headerText>
+        <categories>
+          <category id="c1" headerText="Table 1">
+            <description>$DefaultEditDescription</description>
+            <dataFields>
+              <dataField fieldName="LongUrl" />
+              <dataField fieldName="Title" columns="50" />
+              <dataField fieldName="Hash" columns="50" textMode="Static">
+              </dataField>
+              <dataField fieldName="ShortUrl" columns="50" textMode="Static">
+              </dataField>
+              <dataField fieldName="CreateDate" columns="20" textMode="Static" hidden="true">
+              </dataField>
+              <dataField fieldName="UpdateDate" columns="20" textMode="Static" hidden="true">
+              </dataField>
+            </dataFields>
+          </category>
+        </categories>
+      </view>
+      <view id="createForm1" type="Form" commandId="command1" label="New Table 1">
+        <headerText>$DefaultCreateViewDescription</headerText>
+        <categories>
+          <category id="c1">
+            <description>$DefaultNewDescription</description>
+            <dataFields>
+              <dataField fieldName="LongUrl" />
+              <dataField fieldName="Title" columns="50" />
+              <dataField fieldName="Hash" columns="50" textMode="Static">
+              </dataField>
+              <dataField fieldName="ShortUrl" columns="50" textMode="Static">
+              </dataField>
+              <dataField fieldName="CreateDate" columns="20" textMode="Static">
+              </dataField>
+              <dataField fieldName="UpdateDate" columns="20" textMode="Static" hidden="true">
+              </dataField>
+            </dataFields>
+          </category>
+        </categories>
+      </view>
+    </views>
+    <actions>
+      <actionGroup id="ag1" scope="Grid">
+        <action id="a1" commandName="Select" commandArgument="editForm1" />
+        <action id="a2" commandName="Edit" />
+        <action id="a3" commandName="Delete" />
+        <action id="a6" />
+        <action id="a7" commandName="New" commandArgument="grid1" />
+        <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      </actionGroup>
+      <actionGroup id="ag2" scope="Form">
+        <action id="a1" commandName="Edit" />
+        <action id="a2" commandName="Delete" />
+        <action id="a3" commandName="Cancel" />
+        <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="Save" />
+        <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+        <action id="a6" whenLastCommandName="New" commandName="Insert" commandArgument="Save" />
+        <action id="a7" whenLastCommandName="New" commandName="Insert" commandArgument="SaveAndNew" />
+        <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+        <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+        <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+        <action id="a13" whenLastCommandName="Insert" whenLastCommandArgument="Save" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenClientScript="this.hasDetails()" />
+        <action id="a14" whenLastCommandName="Insert" whenLastCommandArgument="SaveAndNew" commandName="New" commandArgument="createForm1" />
+      </actionGroup>
+      <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+        <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+      </actionGroup>
+      <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+        <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+        <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+      </actionGroup>
+      <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+        <action id="a1" commandName="ExportCsv" />
+        <action id="a2" />
+        <action id="a3" commandName="ExportRowset" />
+        <action id="a4" commandName="ExportRss" />
+        <action id="a5" />
+        <action id="a6" commandName="Import" commandArgument="createForm1" />
+        <action id="a7" commandName="DataSheet" />
+        <action id="a8" commandName="Grid" />
+      </actionGroup>
+      <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+        <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+        <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+        <action id="a3" whenLastCommandName="New" commandName="Insert" />
+        <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+      </actionGroup>
+      <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+        <action id="a1" commandName="ReportAsPdf" />
+        <action id="a2" commandName="ReportAsImage" />
+        <action id="a3" commandName="ReportAsExcel" />
+        <action id="a4" commandName="ReportAsWord" />
+      </actionGroup>
+      <actionGroup id="ag8" scope="Row">
+        <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+        <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+        <action id="a6" whenLastCommandName="New" commandName="Insert" />
+        <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      </actionGroup>
+    </actions>
+    <businessRules>
+      <rule id="r100" commandName="Insert" type="Code" phase="Execute" />
+      <rule id="r101" commandName="Update" type="Code" phase="Execute" />
+      <rule id="r102" commandName="New" type="Code" phase="Execute" />
+      <rule id="r103" commandName="Calculate" type="Code" phase="Execute" />
+    </businessRules>
+  </dataController>
+  <dataController name="Table_2" conflictDetection="overwriteChanges" label="Table 2" nativeSchema="dbo" nativeTableName="Table_2" generateDataAccessObjects="true">
+    <commands>
+      <command id="command1" type="Text">
+        <text><![CDATA[
+select
+	"Table_2"."Id" "Id"
+	,"Table_2"."trackingNo" "trackingNo"
+	,"Table_2"."fkcourier" "fkcourier"
+	,"fkcourier"."Title" "fkcourierTitle"
+	,"Table_2"."status" "status"
+	,"Table_2"."currentStatus" "currentStatus"
+from "dbo"."Table_2" "Table_2"
+	left join "dbo"."Table_3" "fkcourier" on "Table_2"."fkcourier" = "fkcourier"."Id"
+]]></text>
+      </command>
+      <command id="IdIdentityCommand" type="Text" event="Inserted">
+        <text><![CDATA[select @@identity]]></text>
+        <output>
+          <fieldOutput fieldName="Id" />
+        </output>
+      </command>
+    </commands>
+    <fields>
+      <field name="Id" type="Int32" allowNulls="false" isPrimaryKey="true" label="Id" readOnly="true" />
+      <field name="trackingNo" type="String" label="tracking No" length="50" showInSummary="true" allowNulls="false" />
+      <field name="fkcourier" type="Int32" label="Fkcourier" showInSummary="true" causesCalculate="true" allowNulls="false">
+        <items style="Lookup" dataController="Table_3" newDataView="createForm1" dataValueField="Id" dataTextField="Title" />
+      </field>
+      <field name="fkcourierTitle" type="String" readOnly="true" label="Fkcourier Title" length="50" />
+      <field name="status" type="String" label="Status" length="50" showInSummary="true" />
+      <field name="currentStatus" type="String" label="current Status" length="500" showInSummary="true" />
+    </fields>
+    <views>
+      <view id="grid1" type="Grid" commandId="command1" label="Table 2">
+        <headerText>$DefaultGridViewDescription</headerText>
+        <dataFields>
+          <dataField fieldName="trackingNo" columns="50" />
+          <dataField fieldName="fkcourier" aliasFieldName="fkcourierTitle" />
+          <dataField fieldName="status" columns="50" />
+          <dataField fieldName="currentStatus" />
+        </dataFields>
+      </view>
+      <view id="editForm1" type="Form" commandId="command1" label="Review Table 2">
+        <headerText>$DefaultEditViewDescription</headerText>
+        <categories>
+          <category id="c1" headerText="Table 2">
+            <description>$DefaultEditDescription</description>
+            <dataFields>
+              <dataField fieldName="trackingNo" columns="50" />
+              <dataField fieldName="fkcourier" aliasFieldName="fkcourierTitle" />
+              <dataField fieldName="status" columns="50" textMode="Static">
+              </dataField>
+              <dataField fieldName="currentStatus" textMode="Static">
+              </dataField>
+            </dataFields>
+          </category>
+        </categories>
+      </view>
+      <view id="createForm1" type="Form" commandId="command1" label="New Table 2">
+        <headerText>$DefaultCreateViewDescription</headerText>
+        <categories>
+          <category id="c1">
+            <description>$DefaultNewDescription</description>
+            <dataFields>
+              <dataField fieldName="trackingNo" columns="50" />
+              <dataField fieldName="fkcourier" aliasFieldName="fkcourierTitle" />
+              <dataField fieldName="status" columns="50" textMode="Static">
+              </dataField>
+              <dataField fieldName="currentStatus" textMode="Static">
+              </dataField>
+            </dataFields>
+          </category>
+        </categories>
+      </view>
+    </views>
+    <actions>
+      <actionGroup id="ag1" scope="Grid">
+        <action id="a1" commandName="Select" commandArgument="editForm1" />
+        <action id="a2" commandName="Edit" />
+        <action id="a3" commandName="Delete" />
+        <action id="a6" />
+        <action id="a7" commandName="New" commandArgument="grid1" />
+        <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      </actionGroup>
+      <actionGroup id="ag2" scope="Form">
+        <action id="a1" commandName="Edit" />
+        <action id="a2" commandName="Delete" />
+        <action id="a3" commandName="Cancel" />
+        <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="Save" />
+        <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+        <action id="a6" whenLastCommandName="New" commandName="Insert" commandArgument="Save" />
+        <action id="a7" whenLastCommandName="New" commandName="Insert" commandArgument="SaveAndNew" />
+        <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+        <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+        <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+        <action id="a13" whenLastCommandName="Insert" whenLastCommandArgument="Save" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenClientScript="this.hasDetails()" />
+        <action id="a14" whenLastCommandName="Insert" whenLastCommandArgument="SaveAndNew" commandName="New" commandArgument="createForm1" />
+      </actionGroup>
+      <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+        <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+      </actionGroup>
+      <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+        <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+        <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+      </actionGroup>
+      <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+        <action id="a1" commandName="ExportCsv" />
+        <action id="a2" />
+        <action id="a3" commandName="ExportRowset" />
+        <action id="a4" commandName="ExportRss" />
+        <action id="a5" />
+        <action id="a6" commandName="Import" commandArgument="createForm1" />
+        <action id="a7" commandName="DataSheet" />
+        <action id="a8" commandName="Grid" />
+      </actionGroup>
+      <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+        <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+        <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+        <action id="a3" whenLastCommandName="New" commandName="Insert" />
+        <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+      </actionGroup>
+      <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+        <action id="a1" commandName="ReportAsPdf" />
+        <action id="a2" commandName="ReportAsImage" />
+        <action id="a3" commandName="ReportAsExcel" />
+        <action id="a4" commandName="ReportAsWord" />
+      </actionGroup>
+      <actionGroup id="ag8" scope="Row">
+        <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+        <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+        <action id="a6" whenLastCommandName="New" commandName="Insert" />
+        <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      </actionGroup>
+      <actionGroup id="ag100" scope="ActionBar" flat="true">
+        <action commandName="Custom" headerText="REFRESH" id="a100" confirmation="Confirm" />
+      </actionGroup>
+    </actions>
+    <businessRules>
+      <rule id="r100" commandName="Custom" type="Code" phase="Execute" />
+      <rule id="r101" commandName="Calculate" type="Code" phase="Execute" commandArgument="fkcourier" />
+    </businessRules>
+  </dataController>
+  <dataController name="Table_3" conflictDetection="overwriteChanges" label="Table 3" nativeSchema="dbo" nativeTableName="Table_3">
+    <commands>
+      <command id="command1" type="Text">
+        <text><![CDATA[
+select
+	"Table_3"."Id" "Id"
+	,"Table_3"."Title" "Title"
+from "dbo"."Table_3" "Table_3"
+]]></text>
+      </command>
+      <command id="IdIdentityCommand" type="Text" event="Inserted">
+        <text><![CDATA[select @@identity]]></text>
+        <output>
+          <fieldOutput fieldName="Id" />
+        </output>
+      </command>
+    </commands>
+    <fields>
+      <field name="Id" type="Int32" allowNulls="false" isPrimaryKey="true" label="Id" readOnly="true" />
+      <field name="Title" type="String" label="Title" length="50" showInSummary="true" />
+    </fields>
+    <views>
+      <view id="grid1" type="Grid" commandId="command1" label="Table 3">
+        <headerText>$DefaultGridViewDescription</headerText>
+        <dataFields>
+          <dataField fieldName="Title" columns="50" />
+        </dataFields>
+      </view>
+      <view id="editForm1" type="Form" commandId="command1" label="Review Table 3">
+        <headerText>$DefaultEditViewDescription</headerText>
+        <categories>
+          <category id="c1" headerText="Table 3">
+            <description>$DefaultEditDescription</description>
+            <dataFields>
+              <dataField fieldName="Title" columns="50" />
+            </dataFields>
+          </category>
+        </categories>
+      </view>
+      <view id="createForm1" type="Form" commandId="command1" label="New Table 3">
+        <headerText>$DefaultCreateViewDescription</headerText>
+        <categories>
+          <category id="c1">
+            <description>$DefaultNewDescription</description>
+            <dataFields>
+              <dataField fieldName="Title" columns="50" />
+            </dataFields>
+          </category>
+        </categories>
+      </view>
+    </views>
+    <actions>
+      <actionGroup id="ag1" scope="Grid">
+        <action id="a1" commandName="Select" commandArgument="editForm1" />
+        <action id="a2" commandName="Edit" />
+        <action id="a3" commandName="Delete" />
+        <action id="a6" />
+        <action id="a7" commandName="New" commandArgument="grid1" />
+        <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      </actionGroup>
+      <actionGroup id="ag2" scope="Form">
+        <action id="a1" commandName="Edit" />
+        <action id="a2" commandName="Delete" />
+        <action id="a3" commandName="Cancel" />
+        <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="Save" />
+        <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+        <action id="a6" whenLastCommandName="New" commandName="Insert" commandArgument="Save" />
+        <action id="a7" whenLastCommandName="New" commandName="Insert" commandArgument="SaveAndNew" />
+        <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+        <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+        <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+        <action id="a13" whenLastCommandName="Insert" whenLastCommandArgument="Save" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenClientScript="this.hasDetails()" />
+        <action id="a14" whenLastCommandName="Insert" whenLastCommandArgument="SaveAndNew" commandName="New" commandArgument="createForm1" />
+      </actionGroup>
+      <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+        <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+      </actionGroup>
+      <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+        <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+        <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+      </actionGroup>
+      <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+        <action id="a1" commandName="ExportCsv" />
+        <action id="a2" />
+        <action id="a3" commandName="ExportRowset" />
+        <action id="a4" commandName="ExportRss" />
+        <action id="a5" />
+        <action id="a6" commandName="Import" commandArgument="createForm1" />
+        <action id="a7" commandName="DataSheet" />
+        <action id="a8" commandName="Grid" />
+      </actionGroup>
+      <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+        <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+        <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+        <action id="a3" whenLastCommandName="New" commandName="Insert" />
+        <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+      </actionGroup>
+      <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+        <action id="a1" commandName="ReportAsPdf" />
+        <action id="a2" commandName="ReportAsImage" />
+        <action id="a3" commandName="ReportAsExcel" />
+        <action id="a4" commandName="ReportAsWord" />
+      </actionGroup>
+      <actionGroup id="ag8" scope="Row">
+        <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+        <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+        <action id="a6" whenLastCommandName="New" commandName="Insert" />
+        <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      </actionGroup>
+    </actions>
+  </dataController>
+</dataControllerCollection>

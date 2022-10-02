@@ -1,0 +1,50 @@
+<!-- 
+  This file is provided to store the settings for your Data Aquarium project. 
+  You can safely delete this file if no further code generation is planned.
+-->
+<project compatibility="20111118" dataModel="required" appFolder="app" displayName="ShortLink" group="POC" type="Web Site Factory" sourceControl="other" subscriptionLevel="Unlimited" name="ShortLink" prettyName="Short Link" appGenVersion="8.9.22.0" codeDomProvider="CSharp" targetFramework="4.7.2" userInterface="TouchUI" pageImplementation="html" databaseChanged="true" xmlns="urn:schemas-codeontime-com:data-aquarium-project">
+  <connectionString hostDatabaseSharing="false" sessionStateMode="None">Data Source=45.91.132.155;Initial Catalog=TEST;Persist Security Info=True;User ID=my;Password=abc@12345;</connectionString>
+  <providerName>System.Data.SqlClient</providerName>
+  <namespace>MyCompany</namespace>
+  <webServer run="true" port="37117" preview="Browser" client="">
+    <webConfig>AppendChild: /configuration/appSettings
+&lt;add key="apikey" value="Y6vuHDnsM9fAnveDowgCmh7nqD6fn2Mr" /&gt;
+&lt;add key="trackapikey" value="441badcc6c1e8f4a8ff66d5c275903fcad394956" /&gt;
+&lt;add key="trackKeySecret" value="59ad83379b881f243890eae8093ba72d87fd5035899e1b87aaa47e98f0674edab379bd600f7101d6270cb6c5b07e13d91c176d57faf6022b8b17ea4e4aaba48832186c3609e6fe434ae459" /&gt;</webConfig>
+  </webServer>
+  <features useSaveAndNew="true" pageHeader="" copyright="" annotations="false" annotationsPath="" newColumn="true" floating="false" maxGridFields="100" multiSelect="false" batchEdit="false" advancedSearch="false" advancedLookup="false" relationshipExplorer="false" enablePermalinks="false" enableHistory="false" enableTransactions="false" showModalForms="true" tabViewSelection="1">
+    <navigation detectUnderscoreSeparatedSchema="" />
+    <blob allowUploadOnInsert="true" />
+    <framework scriptOnly="true" useExtenders="false" />
+    <grid actionColumn="false" />
+    <touch desktopDisplayDensity="Condensed" mobileDisplayDensity="Auto" transitions="" sidebar="Landscape" labelsInList="DisplayedBelow" initialListMode="SeeAll" menu="toolbar" promoteActions="true" smartDates="false" mapApiIdentifier="" mapApiIdentifierMobile="" />
+    <cms searchEngine="" analysisEngine="" analysisOnDataPages="false" />
+    <ease urlHashing="false">
+      <auditing></auditing>
+    </ease>
+    <packageProperties></packageProperties>
+    <smtp deliveryMethod="Network" deliveryFormat="" from="" clientDomain="" targetName="" host="" port="" defaultCredentials="true" enableSsl="false" username="" password="" />
+    <addons OfflineSync="" ContentMaker="" />
+  </features>
+  <reports enabled="true" version="15" />
+  <host path="" url="" />
+  <databaseObjectFilter generate="ControllersAndPages"></databaseObjectFilter>
+  <bll normalizeModelNames="false" discoveryDepth="1" labelFormatExpression="" selectMethod="Select" selectSingleMethod="SelectSingle" insertMethod="Insert" updateMethod="Update" deleteMethod="Delete" generateSharedBusinessRules="true" includeViews="true" tabViewSelection="0">
+    <fieldMap></fieldMap>
+    <keys></keys>
+    <fieldsToIgnore></fieldsToIgnore>
+    <fieldsToHide></fieldsToHide>
+    <customLabels></customLabels>
+  </bll>
+  <membership enabled="false" providerName="System.Data.SqlClient" connectionString="" windowsAuthentication="false" activeDirectory="false" customSecurity="false" dedicatedLogin="false" displayRememberMe="true" rememberMeSet="false" displaySignUp="true" displayPasswordRecovery="true" displayMyAccount="true" displayHelp="true" idleUserDetectionTimeout="-1" tabViewSelection="0" validationKey="604CAE6188A0AAF86D4FAB87737D73535E36A99674E7934167925D58279BCE24B88C49D227FA602F235932DF32F3570DA57E7CC94DC7460D0D244BB65FD578B4">
+    <adConfig></adConfig>
+    <config></config>
+  </membership>
+  <globalization uiCulture="en-US" culture="en-GB" enableClientBasedCulture="false" supportedCultures="en-GB,en-US; " googleTranslateApiKey="" />
+  <layout name="Classic" menuStyle="MultiLevel" />
+  <theme name="Azure" />
+  <publish mode="FileSystem">
+    <ftp external="false">{"url":"155.254.244.38:21","username":"COT8910","password":"S@kcomsc1","previewUrl":"ftp://155.254.244.38/www.cot.somee.com","webConfigCustomizations":{}}</ftp>
+    <fileSystem external="false">{"path":"C:\\Users\\Creator15\\Documents\\My Web Sites","previewUrl":"","webConfigCustomizations":{}}</fileSystem>
+  </publish>
+</project>

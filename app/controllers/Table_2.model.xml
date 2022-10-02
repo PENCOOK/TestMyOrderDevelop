@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Table_2" alias="Table_2" created="2022-10-01T18:33:21" modified="2022-10-01T18:33:23" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="fkcourier" parentTableSchema="dbo" parentTableName="Table_3" x="311" y="20">
+      <foreignKeyColumn columnName="fkcourier" parentColumnName="Id" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="Id" fieldName="Id" label="Id" />
+    <column name="trackingNo" fieldName="trackingNo" label="tracking No" />
+    <column name="fkcourier" fieldName="fkcourier" label="Fkcourier" aliasColumnName="Title" aliasForeignKey="fkcourier" />
+    <column name="Title" fieldName="fkcourierTitle" label="Fkcourier Title" foreignKey="fkcourier" />
+    <column name="status" fieldName="status" label="Status" />
+    <column name="currentStatus" fieldName="currentStatus" label="current Status" />
+  </columns>
+</dataModel>
